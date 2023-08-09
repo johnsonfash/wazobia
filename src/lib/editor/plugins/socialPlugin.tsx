@@ -1,19 +1,17 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $insertNodes } from "lexical";
 import { useEffect } from "react";
-import { $createImageNode, INSERT_IMAGE_COMMAND } from "../nodes/imageNode";
+import { INSERT_SOCIAL_COMMAND, $createSocialNode } from "../nodes/socialNode";
 
-export function ImagePlugin() {
+export function SocialPlugin() {
   const [editor] = useLexicalComposerContext();
 
   useEffect(() => {
-    // Similar with command listener, which returns unlisten callback
     const removeListener = editor.registerCommand(
-      INSERT_IMAGE_COMMAND,
+      INSERT_SOCIAL_COMMAND,
       (payload) => {
-        // Adding custom command that will be handled by this plugin
         editor.update(() => {
-          $insertNodes([$createImageNode(payload)]);
+          $insertNodes([$createSocialNode(payload)]);
         });
         return true;
       },

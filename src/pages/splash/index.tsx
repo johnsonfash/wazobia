@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import hive from '../../assets/hive.png'
+
 const Splash = () => {
   return (
     <main

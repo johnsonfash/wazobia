@@ -1,19 +1,17 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $insertNodes } from "lexical";
 import { useEffect } from "react";
-import { $createImageNode, INSERT_IMAGE_COMMAND } from "../nodes/imageNode";
+import { $createVideoNode, INSERT_VIDEO_COMMAND } from "../nodes/videoNode";
 
-export function ImagePlugin() {
+export function VideoPlugin() {
   const [editor] = useLexicalComposerContext();
 
   useEffect(() => {
-    // Similar with command listener, which returns unlisten callback
     const removeListener = editor.registerCommand(
-      INSERT_IMAGE_COMMAND,
+      INSERT_VIDEO_COMMAND,
       (payload) => {
-        // Adding custom command that will be handled by this plugin
         editor.update(() => {
-          $insertNodes([$createImageNode(payload)]);
+          $insertNodes([$createVideoNode(payload)]);
         });
         return true;
       },

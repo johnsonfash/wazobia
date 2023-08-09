@@ -1,57 +1,26 @@
-import Theme from "../../lib/editor/theme";
-import { LexicalComposer } from "@lexical/react/LexicalComposer";
-import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
-import { ContentEditable } from "@lexical/react/LexicalContentEditable";
-import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
+import { TRANSFORMERS } from "@lexical/markdown";
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
+import { LexicalComposer } from "@lexical/react/LexicalComposer";
+import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
-import { HeadingNode, QuoteNode } from "@lexical/rich-text";
-import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
-import { ListItemNode, ListNode } from "@lexical/list";
-import { CodeHighlightNode, CodeNode } from "@lexical/code";
-import { AutoLinkNode, LinkNode } from "@lexical/link";
+import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { LinkPlugin } from "@lexical/react/LexicalLinkPlugin";
 import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { MarkdownShortcutPlugin } from "@lexical/react/LexicalMarkdownShortcutPlugin";
-import { TRANSFORMERS } from "@lexical/markdown";
-import CodeHighlightPlugin from "../../lib/editor/plugins/codeHighlightPlugin";
-import ListMaxIndentLevelPlugin from "../../lib/editor/plugins/listMaxIndentLevelPlugin";
-import MyAutoLinkPlugin from "../../lib/editor/plugins/autoLinkPlugin";
-import ToolbarPlugin from "../../lib/editor/plugins/toolbarPlugin";
-import EmbedPlugin from "../../lib/editor/plugins/embedPlugin";
-import { ImageNode, ImagePlugin } from "../../lib/editor/plugins/imagePlugin";
+import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import Navbar from "../../components/navbar";
-
-function Placeholder() {
-  return <div className="editor-placeholder">Add content...</div>;
-}
-
-const editorConfig = {
-  // The editor theme
-  namespace: 'MyEditor',
-  theme: Theme,
-  // Handling of errors during update
-  onError(error: any) {
-    throw error;
-  },
-  // Any custom nodes go here
-  nodes: [
-    HeadingNode,
-    ListNode,
-    ImageNode,
-    ListItemNode,
-    QuoteNode,
-    CodeNode,
-    CodeHighlightNode,
-    TableNode,
-    TableCellNode,
-    TableRowNode,
-    AutoLinkNode,
-    LinkNode
-  ]
-};
+import editorConfig from "../../lib/editor/config";
+import MyAutoLinkPlugin from "../../lib/editor/plugins/autoLinkPlugin";
+import CodeHighlightPlugin from "../../lib/editor/plugins/codeHighlightPlugin";
+import EmbedPlugin from "../../lib/editor/plugins/embedPlugin";
+import { ImagePlugin } from "../../lib/editor/plugins/imagePlugin";
+import ListMaxIndentLevelPlugin from "../../lib/editor/plugins/listMaxIndentLevelPlugin";
+import ToolbarPlugin from "../../lib/editor/plugins/toolbarPlugin";
+import { VideoPlugin } from "../../lib/editor/plugins/videoPlugin";
+import { SocialPlugin } from "../../lib/editor/plugins/socialPlugin";
 
 export default function Editor() {
+
   return (
     <main>
       <Navbar />
@@ -63,10 +32,12 @@ export default function Editor() {
             <div className="editor-inner">
               <RichTextPlugin
                 contentEditable={<ContentEditable className="editor-input" />}
-                placeholder={<Placeholder />}
+                placeholder={<div className="editor-placeholder">Add content...</div>}
                 ErrorBoundary={LexicalErrorBoundary}
               />
               <EmbedPlugin />
+              <VideoPlugin />
+              <SocialPlugin />
               <ImagePlugin />
               <HistoryPlugin />
               <AutoFocusPlugin />

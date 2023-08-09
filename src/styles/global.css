@@ -5,7 +5,7 @@ body {
   cursor: pointer;
 }
 .pointer:hover {
-  background-color: #F7FCF8;
+  background-color: #f7fcf8;
 }
 .font-0-5 {
   font-size: 0.5rem;
@@ -63,6 +63,9 @@ body {
 }
 .max-w-5 {
   max-width: 5rem;
+}
+.max-w-0 {
+  max-width: 0;
 }
 img {
   max-width: 100%;

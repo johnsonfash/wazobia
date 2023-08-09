@@ -1,6 +1,5 @@
 .other h2 {
   font-size: 18px;
-  color: #444;
   margin-bottom: 7px;
 }
 
@@ -18,7 +17,6 @@
 
 h1 {
   font-size: 24px;
-  color: #333;
 }
 
 .ltr {
@@ -76,6 +74,12 @@ h1 {
 
 .editor-text-italic {
   font-style: italic;
+}
+
+.editor-image {
+  max-height: 500px;
+  width: auto;
+  max-width: 100%;
 }
 
 .editor-text-underline {
@@ -211,7 +215,6 @@ h1 {
 
 .editor-heading-h2 {
   font-size: 15px;
-  color: rgb(101, 103, 107);
   font-weight: 700;
   margin: 0;
   margin-top: 10px;
@@ -336,7 +339,8 @@ pre::-webkit-scrollbar-thumb {
   vertical-align: middle;
 }
 
-.toolbar button.toolbar-item {
+.toolbar button.toolbar-item,
+.toolbar label.toolbar-item {
   border: 0;
   display: flex;
   background: none;
@@ -350,7 +354,8 @@ pre::-webkit-scrollbar-thumb {
   cursor: not-allowed;
 }
 
-.toolbar button.toolbar-item.spaced {
+.toolbar button.toolbar-item.spaced,
+.toolbar label.toolbar-item.spaced {
   margin-right: 2px;
 }
 
@@ -358,6 +363,7 @@ pre::-webkit-scrollbar-thumb {
   transform: rotate(-30deg);
 }
 
+.toolbar label.toolbar-item i.format,
 .toolbar button.toolbar-item i.format {
   background-size: contain;
   display: inline-block;
@@ -369,14 +375,17 @@ pre::-webkit-scrollbar-thumb {
   opacity: 0.6;
 }
 
+.toolbar label.toolbar-item:disabled i.format,
 .toolbar button.toolbar-item:disabled i.format {
   opacity: 0.2;
 }
 
+.toolbar label.toolbar-item.active,
 .toolbar button.toolbar-item.active {
   background-color: rgba(223, 232, 250, 0.3);
 }
 
+.toolbar label.toolbar-item.active i,
 .toolbar button.toolbar-item.active i {
   opacity: 1;
 }
