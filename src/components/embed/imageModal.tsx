@@ -63,7 +63,7 @@ const ImageModal = ({ toggle, editor, toggleDropDown, open, setMainModal }: Imag
         </div>
         <div className="mt-3">
           <button disabled={loading} type="submit" className="btn btn-success me-2">
-            {loading && <Spinner />}Embed
+            {loading && <Spinner className="me-2" />}Embed
           </button>
           <button disabled={loading} type='button' onClick={toggle} className="btn border border-2">Cancel</button>
         </div>
